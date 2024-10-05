@@ -6,6 +6,7 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import cv2
 from tensorflow.keras import backend as K
 from tensorflow.keras.utils import get_custom_objects
+import keras
 
 @tf.keras.utils.register_keras_serializable()
 def dice_coef(y_true, y_pred):
@@ -39,7 +40,7 @@ def bce_dice_loss_log(y_true, y_pred):
 get_custom_objects().update({"dice_coef": dice_coef})
 get_custom_objects().update({"bce_dice_loss_log": bce_dice_loss_log})
 
-model = tf.keras.models.load_model("model/saved_model.keras")
+model = tf.keras.models.load_model("model/saved_model_29_09_24.keras")
 
 def parse_image(img_path, size = (256, 256)):
     img = tf.io.read_file(img_path)
